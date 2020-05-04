@@ -1,0 +1,24 @@
+quarkus:
+  http:
+    port: 10001
+    cors: true
+  log:
+    level: INFO
+  native:
+    additional-build-args: -H:IncludeResourceBundles=sun.util.resources.TimeZoneNames
+mp:
+  jwt:
+    verify:
+      issuer: fr.pipopipette
+      publickey:
+        location: file:///webapps/pipopipette/back/security/publicKey.pem
+"%dev":
+  quarkus:
+    log:
+      level: DEBUG
+  mp:
+     jwt:
+       verify:
+         issuer: fr.pipopipette
+         publickey:
+           location: classpath:/META-INF/resources/publicKey.pem
